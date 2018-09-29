@@ -12,9 +12,14 @@ public class TestService {
             name = "guavaRateLimiter",  //限流实现适配类
             key="'key_'+ #param1" ,     //key, 支持SPEL传参
             replenishRate=1L,           //每秒钟往桶内添加令牌的数量
-            burstCapacity=100L )        //桶容量
+            burstCapacity=100L,         //桶容量
+            fallback="fallbackMethod")  //不允许提交时給用户返回的值，灵感来自spring cloud ribon 
     public void testLimit(String param1){
         log.info("no limit!!");
+    }
+    
+    //fallback调用
+    public void fallbackMethod(){
     }
 }
 </code></pre>
