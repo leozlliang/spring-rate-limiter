@@ -9,10 +9,10 @@
 <pre><code>
 public class TestService {
     @RateLimiter(
-            name = "guavaRateLimiter",
-            key="'key_'+ #param1" ,
-            replenishRate=1L,
-            burstCapacity=100L )
+            name = "guavaRateLimiter",  //限流实现适配类
+            key="'key_'+ #param1" ,     //key, 支持SPEL传参
+            replenishRate=1L,           //每秒钟往桶内添加令牌的数量
+            burstCapacity=100L )        //桶容量
     public void testLimit(String param1){
         log.info("no limit!!");
     }
